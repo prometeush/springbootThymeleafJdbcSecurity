@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org"
+xmlns:sec="https://www.thmeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 15px;
+}
+</style>
+</head>
+<body>
+  <div align="center">
+    <h2 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h2>
+    <br><br>
+      <a th:href="@{/angstForm}">Angestellte Form</a>
+      <br><br>
+      <div style="margin-bottom: 40px;">
+        <form th:action="@{/logout}" method="post">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+       <table>
+           <tr>
+               <th>Id</th>
+               <th>Vorname</th>
+               <th>Nachname</th>
+               <th>Email</th>
+               <th>Prog_Sprache</th>
+               <th>Anfang</th>
+               <th>Gender</th>
+               <th sec:authorize="hasRole('ADMIN')" colspan="2">Action</th>
+           </tr>
+           <tr th:each="angst : ${angstlist}">
+              <td th:text="${angst.id}"></td>
+              
+              <td th:text="${angst.vorname}"></td>
+              <td th:text="${angst.nachname}"></td>
+              <td th:text="${angst.email}"></td>
+              
+              <td th:text="${angst.prog_sprache}"></td>
+              
+              <td th:text="${angst.anfang}"></td>
+              
+              <td th:text="${angst.gender}"></td>
+              
+              <td sec:authorize="hasRole('ADMIN')"><a th:href="@{'/delete/'+${angst.id}}">Delete</a></td>
+              <td sec:authorize="hasRole('ADMIN')"><a th:href="@{'/update/'+${angst.id}}">Update</a></td>
+           </tr>
+       </table>
+  </div>
+</body>
+</html>

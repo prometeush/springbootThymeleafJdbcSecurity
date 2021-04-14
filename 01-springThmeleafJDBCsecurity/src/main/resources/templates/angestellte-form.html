@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+  label,input{display: inline-block;width: 150px}  
+</style>
+</head>
+<body>
+  <div align="center">
+      <form th:action="@{/angstSave}" th:object="${angstmodel}" method="post">
+         <label>vorname</label>
+         <input type="text" th:field="*{vorname}">
+         <br><br>
+         
+         <label>Nachname</label>
+         <input type="text" th:field="*{nachname}">
+         <br><br>
+         
+          <label>Email</label>
+          <input type="text" th:field="*{email}">
+          <br><br>
+          
+         
+         <label>Prog_sprache</label>
+         <select th:field="*{prog_sprache}">
+            <option th:value="java">Java</option>
+            <option th:value="javaFX">JavaFX</option>
+            <option th:value="springboot">Spring Boot</option>
+            <option th:value="Angular">Angular</option>
+            <option th:value="javascript">Javascript</option>
+         </select>
+         <br><br>
+         
+          <label>Anfang</label>
+          <input type="text" th:field="*{anfang}">
+          <br><br>
+          
+         <label>Enabled</label>
+         <input type="radio" name="radios" th:value="Frau" th:field="*{gender}">Frau
+         <input type="radio" name="radios" th:value="Herr" th:field="*{gender}">Herr
+         <br>
+         
+         <br>
+         <button type="submit">Anmelden</button>
+         <br>
+      </form>
+  </div>
+</body>
+</html>

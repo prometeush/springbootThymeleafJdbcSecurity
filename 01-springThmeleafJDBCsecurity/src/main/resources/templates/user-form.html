@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+  label,input{display: inline-block;width: 150px}  
+</style>
+</head>
+<body>
+  <div align="center">
+     <div>
+        <form th:action="@{/logout}" method="post">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+      <form th:action="@{/usersSave}" th:object="${usersmodel}" method="post">
+         <label>Username</label>
+         <input type="text" th:field="*{username}">
+         <br><br>
+         <label>Password</label>
+         <input type="password" th:field="*{password}">
+         <br><br>
+         <label>Role</label>
+         <select th:field="*{role}">
+            <option th:value="ROLE_ADMIN">ROLE_ADMIN</option>
+            <option th:value="ROLE_USER">ROLE_USER</option>
+         </select>
+         <br><br>
+         <label>Enabled</label>
+         <input type="checkbox" th:field="*{enabled}">
+         <br>
+         
+         <br>
+         <button type="submit">Anmelden</button>
+         <br>
+      </form>
+  </div>
+</body>
+</html>

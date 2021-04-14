@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thmeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+  label,input{display: inline-block;width: 150px}  
+</style>
+</head>
+<body>
+  <div align="center">
+    <h2 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h2>
+      <a th:href="@{/usersForm}">User Form</a>
+      <br><br>
+      <a th:href="@{/angstForm}">Angestellte Form</a>
+      <br><br>
+      <a th:href="@{/angstinfo}">Angestellte Info</a>
+      <br><br>
+      <div>
+        <form th:action="@{/logout}" method="post">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+  </div>
+</body>
+</html>
